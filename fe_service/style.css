@@ -1,0 +1,55 @@
+body {
+  font-family: Arial;
+  background: #f4f6f8;
+}
+
+.container {
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.note {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.note h3 {
+  margin: 0;
+}
+
+.actions button {
+  margin-right: 5px;
+  background: #2196F3;
+}
+
+.actions .delete {
+  background: red;
+}
