@@ -2,7 +2,8 @@ const Notes = require("../schema/Notes");
 
 const findAll = async () => {
   return await Notes.findAll({
-    attributes: ["id", "judul", "isi"],
+    attributes: ["id", "judul", "isi", "tanggal_dibuat"],
+    order: [["tanggal_dibuat","DESC"]]
   });
 };
 
@@ -12,7 +13,7 @@ const create = async (notesData) => {
 
 const findById = async (id) => {
   return await Notes.findByPk(id, {
-    attributes: ["id", "judul", "isi"],
+    attributes: ["id", "judul", "isi", "tanggal_dibuat"],
   });
 }
 

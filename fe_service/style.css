@@ -1,6 +1,6 @@
 body {
   font-family: Arial;
-  background: #f4f6f8;
+  background: rgb(255, 255, 255);
 }
 
 .container {
@@ -14,35 +14,79 @@ h1 {
 }
 
 .form {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* spasi antar elemen form */
 }
 
-input, textarea {
+.form input[type="text"],
+.form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
+  box-sizing: border-box;
 }
 
-button {
+.form textarea {
+  resize: vertical;
+  min-height: 100px; /* tinggi textarea lebih nyaman */
+}
+
+.form button {
   padding: 10px;
-  background: #4CAF50;
-  color: white;
+  background: #4caf50;
+  color: #fff;
   border: none;
+  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.form button:hover {
+  background: #45a049;
 }
 
 .note {
-  background: white;
+  background: #d7ffd3;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 6px;
   margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.note h3 {
-  margin: 0;
+.note .actions {
+  margin-top: 10px;
+}
+
+.note button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.note button.delete {
+  background: #f44336;
+  color: #fff;
+}
+
+.note button.delete:hover {
+  background: #d32f2f;
+}
+
+.note button:hover {
+  opacity: 0.9;
+}
+
+.date {
+    font-size: 12px;
+    color: gray;
+    margin-top: 5px;
 }
 
 .actions button {

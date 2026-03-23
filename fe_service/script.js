@@ -15,6 +15,7 @@ async function getNotes() {
     div.innerHTML = `
       <h3>${note.judul}</h3>
       <p>${note.isi}</p>
+      <p class="date">${new Date(note.tanggal_dibuat).toLocaleString()}</p>
 
       <div class="actions">
         <button onclick='editNote(${note.id}, ${JSON.stringify(note.judul)}, ${JSON.stringify(note.isi)})'>Edit</button>
@@ -56,22 +57,36 @@ async function hapus(id) {
 }
 
 function editNote(id, judul, isi) {
-  const newJudul = prompt("Edit judul:", judul);
-  const newIsi = prompt("Edit isi:", isi);
-
-  if (!newJudul || !newIsi) return;
-
-  updateNote(id, newJudul, newIsi);
+  document.getElementById("editId").value = id;
+  document.getElementById("judul").value = judul;
+  document.getElementById("isi").value = isi;
 }
 
-async function updateNote(id, judul, isi) {
-  await fetch(`${API}/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ judul, isi })
-  });
+async function submitNote() {
+  const id = document.getElementById("editId").value;
+  const judul = document.getElementById("judul").value;
+  const isi = document.getElementById("isi").value;
+
+  if (id) {
+    // UPDATE
+    await fetch(`${API}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ judul, isi })
+    });
+  } else {
+    // CREATE
+    await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ judul, isi })
+    });
+  }
+
+  // reset form
+  document.getElementById("editId").value = "";
+  document.getElementById("judul").value = "";
+  document.getElementById("isi").value = "";
 
   getNotes();
 }
