@@ -19,5 +19,5 @@ handlers:
 
   # Handler utama untuk index.html
   - url: /.*
-    static_files: index.html
-    upload: index.html
+    static_files: main.html
+    upload: main.html
