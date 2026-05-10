@@ -1,4 +1,4 @@
-const API = "https://be-rest-521926891872.us-central1.run.app/";
+const API = "https://be-rest-521926891872.us-central1.run.app";
 
 async function getNotes() {
   const res = await fetch(API);
