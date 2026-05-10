@@ -1,4 +1,5 @@
-const API = "https://be-rest-521926891872.us-central1.run.app";
+// Tambahkan /api/v1/notes di ujung URL-nya
+const API = "https://be-rest-521926891872.us-central1.run.app/api/v1/notes";
 
 async function getNotes() {
   const res = await fetch(API);
@@ -7,7 +8,7 @@ async function getNotes() {
   const list = document.getElementById("list");
   list.innerHTML = "";
 
-  result.data.forEach(note => {
+  result.data.forEach((note) => {
     console.log(note);
     const div = document.createElement("div");
     div.className = "note";
@@ -34,9 +35,9 @@ async function tambahNote() {
   await fetch(API, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ judul, isi })
+    body: JSON.stringify({ judul, isi }),
   });
 
   document.getElementById("judul").value = "";
@@ -47,7 +48,7 @@ async function tambahNote() {
 
 async function hapus(id) {
   const res = await fetch(`${API}/${id}`, {
-    method: "DELETE"
+    method: "DELETE",
   });
 
   const data = await res.json();
@@ -72,14 +73,14 @@ async function submitNote() {
     await fetch(`${API}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ judul, isi })
+      body: JSON.stringify({ judul, isi }),
     });
   } else {
     // CREATE
     await fetch(API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ judul, isi })
+      body: JSON.stringify({ judul, isi }),
     });
   }
 
