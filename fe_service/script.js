@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/api/v1/notes";
+const API = "https://notes-shofi-dot-a-46-491023.uc.r.appspot.com/";
 
 async function getNotes() {
   const res = await fetch(API);
