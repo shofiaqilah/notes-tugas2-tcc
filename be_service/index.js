@@ -23,8 +23,14 @@ require("./schema/Notes"); // Untuk generate Tabel
 app.use("/api/v1/notes", notesRoutes); // Untuk setting routes
 
 // Sync Database dan Jalankan Server
-const port = process.env.PORT || 3000;
+// Ganti bagian port ini
+const port = process.env.PORT || 5000; // Default ke 5000 sesuai Dockerfile kamu
+
 sequelize.sync().then(() => {
   console.log("Database synced");
-  app.listen(port, () => console.log(`Server running on port ${port}`));
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on port ${port}`);
+  });
+}).catch(err => {
+  console.error("Gagal koneksi database:", err);
 });
