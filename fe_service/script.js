@@ -4,26 +4,20 @@ const API = "https://be-rest-521926891872.us-central1.run.app/api/v1/notes";
 async function getNotes() {
   const res = await fetch(API);
   const result = await res.json();
-
   const list = document.getElementById("list");
   list.innerHTML = "";
 
-  result.data.forEach((note) => {
-    console.log(note);
+  // Pastikan mengambil dari result.data jika ada, atau gunakan result langsung
+  const notes = result.data || result;
+
+  notes.forEach((note) => {
     const div = document.createElement("div");
     div.className = "note";
-
     div.innerHTML = `
       <h3>${note.judul}</h3>
       <p>${note.isi}</p>
-      <p class="date">${new Date(note.tanggal_dibuat).toLocaleString()}</p>
-
-      <div class="actions">
-        <button onclick='editNote(${note.id}, ${JSON.stringify(note.judul)}, ${JSON.stringify(note.isi)})'>Edit</button>
-        <button class="delete" onclick="hapus(${Number(note.id)})">Hapus</button>
-      </div>
+      <small>${new Date(note.tanggal_dibuat).toLocaleString()}</small>
     `;
-
     list.appendChild(div);
   });
 }
