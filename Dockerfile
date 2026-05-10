@@ -1,8 +1,9 @@
 FROM node:20-alpine
 WORKDIR /app
 COPY . .
+WORKDIR /app/be_service
 RUN npm install
-EXPOSE 3000
+EXPOSE 5000
 CMD ["node", "index.js"]
 
 # Notes : 
