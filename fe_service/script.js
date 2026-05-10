@@ -14,12 +14,17 @@ async function getNotes() {
     const div = document.createElement("div");
     div.className = "note";
     div.innerHTML = `
+    
   <h3>${note.judul}</h3>
   <p>${note.isi}</p>
   <small>${new Date(note.tanggal_dibuat).toLocaleString()}</small>
 
   <div style="margin-top:10px;">
-    <button onclick="editNote(${note.id}, '${note.judul}', '${note.isi}')">
+    <button onclick='editNote(
+      ${note.id},
+      ${JSON.stringify(note.judul)},
+      ${JSON.stringify(note.isi)}
+    )'>
       Edit
     </button>
 
