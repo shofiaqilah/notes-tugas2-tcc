@@ -1,23 +1,23 @@
 runtime: nodejs20
 service: notes-shofi
 
-# Konfigurasi Scaling agar hemat
 automatic_scaling:
   target_cpu_utilization: 0.65
   min_instances: 0
   max_instances: 1
 
-# WAJIB TAMBAHKAN INI UNTUK FILE STATIS
 handlers:
-  # Pengaturan untuk folder CSS
-  - url: /css
-    static_dir: css
+  # Handler untuk file script.js (karena dia ada di root folder fe)
+  - url: /script.js
+    static_files: script.js
+    upload: script.js
 
-  # Pengaturan untuk folder JS
-  - url: /js
-    static_dir: js
+  # Handler untuk file style (sesuaikan namanya, misal style.css)
+  - url: /style.css
+    static_files: style.css
+    upload: style.css
 
-  # Pengaturan agar semua request mengarah ke index.html
+  # Handler utama untuk index.html
   - url: /.*
     static_files: index.html
     upload: index.html
