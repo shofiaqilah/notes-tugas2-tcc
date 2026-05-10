@@ -1,31 +1,65 @@
 <!DOCTYPE html>
-<html>
-<!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notes App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<body>
 
-<div class="container">
-  <h1>📝 Notes App</h1>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
+  <div class="container">
+    <header class="app-header">
+      <div class="header-icon">✦</div>
+      <h1>Notes</h1>
+      <p class="subtitle">Tulis, simpan, ingat.</p>
+    </header>
 
-<div class="form">
-  <input type="hidden" id="editId">
+    <div class="form-card">
+      <input type="hidden" id="editId">
 
-  <input type="text" id="judul" placeholder="Judul">
-  <textarea id="isi" placeholder="Isi catatan"></textarea>
+      <div class="input-group">
+        <label for="judul">Judul</label>
+        <input type="text" id="judul" placeholder="Nama catatan…" autocomplete="off">
+      </div>
 
-  <button onclick="submitNote()">Simpan</button>
-</div>
-<div id="list"></div>
+      <div class="input-group">
+        <label for="isi">Isi Catatan</label>
+        <textarea id="isi" placeholder="Tulis sesuatu…"></textarea>
+      </div>
 
-<script src="script.js"></script>
+      <button class="btn-save" onclick="submitNote()">
+        <span class="btn-icon" id="btnIcon">＋</span>
+        <span id="btnLabel">Simpan Catatan</span>
+      </button>
+    </div>
+
+    <div class="notes-header">
+      <span class="notes-label">Catatan Tersimpan</span>
+      <span class="notes-count" id="notesCount">0</span>
+    </div>
+
+    <div id="list" class="notes-grid"></div>
+
+    <div id="empty" class="empty-state">
+      <div class="empty-icon">☁</div>
+      <p>Belum ada catatan.<br>Mulai tulis sekarang!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
